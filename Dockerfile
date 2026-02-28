@@ -84,7 +84,7 @@ ENV PATH="/usr/local/bin:/usr/local/lib/node_modules/.bin:${PATH}"
 
 # OpenClaw (npm install fixed)
 RUN if [ "$OPENCLAW_BETA" = "true" ]; then \
-    npm install -g openclaw@beta; \
+    bun install -g openclaw@beta; \
     else \
     npm install -g openclaw; \
     fi
