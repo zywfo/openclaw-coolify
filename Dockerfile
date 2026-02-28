@@ -10,7 +10,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # Core packages + build tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    docker.io \
     curl \
     wget \
     git \
@@ -34,6 +33,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pass \
     chromium \
     && rm -rf /var/lib/apt/lists/*
+
+# Install latest Docker CLI directly to satisfy API 1.44+ requirements
+RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-27.3.1.tgz | tar -xz -C /tmp/ && \
+    mv /tmp/docker/docker /usr/local/bin/ && \
+    rm -rf /tmp/docker
 
 # 🔥 CRITICAL FIX (native modules)
 ENV PYTHON=/usr/bin/python3 \
