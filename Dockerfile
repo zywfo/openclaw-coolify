@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 
 # Core packages + build tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    docker.io \
     curl \
     wget \
     git \
